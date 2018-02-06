@@ -32,6 +32,7 @@ import utils
 app = Flask(__name__, static_url_path='')
 CORS(app)
 
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 routes = Blueprint('ilmo', __name__, url_prefix='/api')
 
 

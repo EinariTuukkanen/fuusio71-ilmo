@@ -27,7 +27,7 @@ function insertUserToTable(index, table, user, excess, prioLimit) {
         row.style.backgroundColor = '#ffe7e7';
     }
     if (prioLimit) {
-        row.style.borderBottom = '3px solid #000'
+        row.style.borderBottom = '3px solid #66b0df'
     }
 }
 

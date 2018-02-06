@@ -37,34 +37,9 @@
 </head>
 
 <body>
-
-    <!-- Navigation -->
-    <!-- <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand" href="index.html">FUUSIO 70</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="index.html">Etusivu</a>
-                    </li>
-                    <li>
-                        <a href="registration.html">Ilmoittautuminen</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
- -->
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/fuusio70header.jpg')">
+    <header class="intro-header" style="background-image: url('img/F71_web_bg_new.png')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -85,13 +60,10 @@
             <span id="registrationInfo" class="subheading">Olet jonossa sijalla ..., täytä ilmoittautumislomake alla vahvistaaksesi ilmoittautumisen. Sinulla on ... minuuttia aikaa ennen lomakkeen vanhentumista.</span>
 
                 <p>Pakolliset kysymykset on merkitty tähdellä (*).</p>
-                <!-- Registration Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
-                <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
-                <!-- NOTE: To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
                 <form name="sentMessage" id="registrationForm" novalidate>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>* Nimi</label>
+                            <label>* Etunimi Sukunimi</label>
                             <input type="text" class="form-control" placeholder="* Etunimi Sukunimi" id="name" name="name" required data-validation-required-message="Ole hyvä ja ilmoita nimesi.">
                             <p class="help-block text-danger"></p>
                         </div>
@@ -112,9 +84,9 @@
                             <select name="status" class="form-control form-select" required data-validation-required-message="Valitse yksi">
                                 <option value="">-- Valitse --</option>
                                 <!-- <option class="invite-status" value="inviteGuest">Kutsuvieras</option> -->
-                                <option value="student">Opiskelija (90€)</option>
-                                <option value="notStudent">Ei-opiskelija (110€)</option>
-                                <option value="supporter">Kannattaja (200€)</option>
+                                <option value="student">Opiskelija (65 €)</option>
+                                <option value="notStudent">Valmistunut (90 €)</option>
+                                <option value="supporter">Yritysedustaja</option>
                             </select>
                         </div>
                     </div>
@@ -126,49 +98,29 @@
                         <div class="col-xs-8 controls">
                             <select name="guildStatus" class="form-control form-select" required data-validation-required-message="Valitse yksi">
                                 <option value="">-- Valitse --</option>
-                                <option value="currentMember">Killan tai alumnin nykyinen jäsen tai tällaisen avec</option>
-                                <option value="exMember">Killan tai alumnin entinen jäsen tai tällaisen avec</option>
-                                <option value="other">Ei mikään edellisistä</option>
+                                <option value="currentMember">Fyysikkokillan nykyinen jäsen</option>
+                                <option value="exMember">Kutsuvieras</option>
+                                <option value="exMember">Fyysikkokiltalaisen avec</option>
+                                <!-- <option value="other">Ei mikään edellisistä</option> -->
                             </select>
                         </div>
                     </div>
                     <div class="row control-group form-row form-group controls">
                         <div class="col-xs-6">
-                            <label>* Ilmoittaudun myös sillikselle (+20€)</label>
+                            <label>* Ilmoittaudun myös sillikselle (+15 €)</label>
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="col-xs-3">
                             <label class="radio-inline">
-                              <input type="radio" name="sillis" minchecked="1" data-validation-minchecked-message="Valitse toinen" value="true">Kyllä
+                              <input type="radio" name="sillis" minchecked="1" data-validation-minchecked-message="Valitse toinen" value="true">
+                              <span class="radio-label">Kyllä</span>
                             </label>
                         </div>
                         <div class="col-xs-3">
                             <label class="radio-inline">
-                              <input type="radio" name="sillis" value="false">Ei
+                              <input type="radio" name="sillis" value="false">
+                              <span class="radio-label">Ei</span>
                             </label>
-                        </div>
-                    </div>
-                    <div class="row control-group form-row form-group controls">
-                        <div class="col-xs-6">
-                            <label>* Haluan antaa tervehdyksen coctail-tilaisuudessa</label>
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div class="col-xs-3">
-                            <label class="radio-inline">
-                              <input type="radio" name="greeting" minchecked="1" data-validation-minchecked-message="Valitse toinen" value="true">Kyllä
-                            </label>
-                        </div>
-                        <div class="col-xs-3">
-                            <label class="radio-inline">
-                              <input type="radio" name="greeting" value="false">Ei
-                            </label>
-                        </div>
-                    </div>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Edustamani taho</label>
-                            <input type="text" class="form-control" placeholder="Edustamasi taho" id="represent" name="represent">
-                            <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group">
@@ -180,15 +132,22 @@
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Avec</label>
+                            <label>Avecin nimi</label>
                             <input type="text" class="form-control" placeholder="Avecin nimi (Pöytäjärjestystä varten; avecin on ilmoittauduttava erikseen)" id="avec" name="avec">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Fuksivuosi</label>
-                            <input type="text" class="form-control" placeholder="Fuksivuosi" id="firstYear" name="firstYear">
+                            <label>Opintojen aloitusvuosi</label>
+                            <input type="text" class="form-control" placeholder="Opintojen aloitusvuosi" id="firstYear" name="firstYear">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Allergiat ja erikoisruokavalio</label>
+                            <textarea rows="2" class="form-control" placeholder="Allergiat ja erikoisruokavalio" id="allergies" name="allergies"></textarea>
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
@@ -202,14 +161,14 @@
                                 <option value="">-- Valitse --</option>
                                 <option value="alcoholic">Alkoholillinen</option>
                                 <option value="nonAlcoholic">Alkoholiton</option>
-                                <option value="onlyWines">Pelkät viinit, muuten alkoholiton</option>
+                                <!-- <option value="onlyWines">Pelkät viinit, muuten alkoholiton</option> -->
                             </select>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Allergiat ja erikoisruokavalio</label>
-                            <textarea rows="2" class="form-control" placeholder="Allergiat ja erikoisruokavalio" id="allergies" name="allergies"></textarea>
+                            <label>Edustamasi taho, mikäli haluatte antaa tervehdyksen Fyysikkokillan raadille</label>
+                            <input type="text" class="form-control" placeholder="Edustamasi taho, mikäli haluatte antaa tervehdyksen Fyysikkokillan raadille" id="represent" name="represent">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
@@ -220,55 +179,14 @@
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
-                    <div class="row control-group form-row form-group controls">
-                        <div class="col-xs-12">
-                            <p>Fyysikkokillan Historiateos ilmestyy keväällä 2017. Historiateos on ammattivoimin kirjoitettu noin 300 sivuinen, kovakantinen teos. Ennakkotilatut teokset varustetaan kirjoittaja Juho Kotakallion nimikirjoituksella.</p>
-                        </div>
-                        <div class="col-xs-6">
-                            <label>* Tilaan historiateoksen hintaan 35€</label>
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div class="col-xs-3">
-                            <label class="radio-inline">
-                              <input type="radio" name="historyOrder" value="true" minchecked="1" data-validation-minchecked-message="Valitse toinen" onclick="showHistoryOrderDetails()">Kyllä
-                            </label>
-                        </div>
-                        <div class="col-xs-3">
-                            <label class="radio-inline">
-                              <input type="radio" name="historyOrder" value="false" onclick="hideHistoryOrderDetails()">Ei
-                            </label>
-                        </div>
-                    </div>
-                    <div class="row control-group form-row history-order-details controls hidden">
-                        <div class="form-group col-xs-5">
-                            <label>Toimitustapa historiateokselle</label>
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div class="col-xs-7 controls">
-                            <select id="historyDeliveryMethod" name="historyDeliveryMethod" class="form-control form-select">
-                                <option value="">-- Valitse --</option>
-                                <option value="pickup">Nouto kiltahuoneelta</option>
-                                <option value="deliverPost">Toimitus postitse (+10€)</option>
-                            </select>
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                    <div class="row control-group history-order-address hidden">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Jos valitsit toimituksen postitse, annathan postitusosoitteesi (osoite, postitoimipaikka ja postinumero)</label>
-                            <textarea rows="2" class="form-control" placeholder="Jos valitsit toimituksen postitse, annathan postitusosoitteesi (osoite, postitoimipaikka ja postinumero)" id="historyAddress" name="historyAddress"></textarea>
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-
                     <br>
                     <div id="success"></div>
                     <div class="row">
                         <div class="form-group col-xs-6">
-                            <button id="submitForm" type="submit" class="btn btn-submit btn-lg">Lähetä</button>
+                            <button type="button" onclick="window.history.back()" class="btn btn-default btn-lg text-center"><span>Takaisin</span></button>
                         </div>
                         <div class="form-group col-xs-6 text-right">
-                            <button type="button" onclick="window.history.back()" class="btn btn-default btn-lg text-center">Takaisin</button>
+                            <button id="submitForm" type="submit" class="btn btn-submit btn-lg"><span>Lähetä</span></button>
                         </div>
                     </div>
                 </form>
