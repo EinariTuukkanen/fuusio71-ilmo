@@ -289,7 +289,7 @@ settings = utils.load_config(
     app,
     get_database(),
     # '/home/fuusio70-ilmo/server/config.ini'
-    '/home/einari/Documents/Dev/fuusio71-ilmo/ilmo/config.ini'
+    '/home/einari/Documents/Dev/fuusio71-ilmo/config.ini'
 )
 mail = Mail(app)
 
