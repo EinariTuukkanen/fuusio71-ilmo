@@ -297,3 +297,6 @@ app.register_blueprint(routes)
 application = app
 
 # application.run()
+
+if __name__ == '__main__':
+    application.run(host='0.0.0.0')
