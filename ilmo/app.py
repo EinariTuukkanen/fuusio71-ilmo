@@ -14,11 +14,10 @@ from bson import ObjectId
 from time import time
 
 # Third-party
-from flask import Flask
-from flask import request
-from flask import Blueprint
+from flask import Flask, request, Blueprint, render_template
 from flask_mail import Mail
 from flask_cors import CORS, cross_origin
+
 
 from pymongo import MongoClient
 
@@ -30,10 +29,26 @@ import utils
 # >>> INITIALIZE
 # ======================================
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
 CORS(app)
 
 routes = Blueprint('ilmo', __name__, url_prefix='/api')
+
+
+# ======================================
+# >>> VIEWS
+# ======================================
+
+@app.route('/', methods=['GET'])
+@cross_origin(origins='*')
+def homepage():
+    return render_template('index.html')
+
+
+@app.route('/registration', methods=['GET'])
+@cross_origin(origins='*')
+def registration():
+    return render_template('registration.html')
 
 # ======================================
 # >>> REST API ENDPOINTS
@@ -273,7 +288,7 @@ settings = utils.load_config(
     app,
     get_database(),
     # '/home/fuusio70-ilmo/server/config.ini'
-    '/home/einari/Documents/Dev/fuusio70-ilmo/server/config.ini'
+    '/home/einari/Documents/Dev/fuusio71-ilmo/ilmo/config.ini'
 )
 mail = Mail(app)
 

@@ -75,9 +75,9 @@ $(function() {
             );
             var count = priorityUsers.length;
             console.log('pre-registration + current members : ' + count);
-            if (priorityUsers.length < 456 && (new Date()).getTime() >= 1485770400000) {
-                $('#registrationButtonContainer').removeClass('hidden');
-            }
+            // if (priorityUsers.length < 456 && (new Date()).getTime() >= 1485770400000) {
+            $('#registrationButtonContainer').removeClass('hidden');
+            // }
             var excess = false;
             var prioLimit = false;
             for (var i = 0; i < usersData.length; i++) {

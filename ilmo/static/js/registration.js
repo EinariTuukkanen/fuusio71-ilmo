@@ -180,7 +180,7 @@ $(function() {
 
                     var redirect = location.href.split('/')
                     redirect.pop();
-                    location.href = redirect.join('/') + '/index.html';
+                    location.href = redirect.join('/');
                 },
                 error: function(response) {
                     console.error('ERROR', response);
