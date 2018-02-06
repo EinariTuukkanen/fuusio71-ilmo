@@ -288,7 +288,7 @@ def get_database():
 settings = utils.load_config(
     app,
     get_database(),
-    '/root/fuusio71-ilmo/ilmo/config.ini'
+    '/var/www/fuusio71-ilmo/ilmo/config.ini'
     # '/home/einari/Documents/Dev/fuusio71-ilmo/ilmo/config.ini'
 )
 mail = Mail(app)
