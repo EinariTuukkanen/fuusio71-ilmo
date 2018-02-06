@@ -22,8 +22,8 @@ from flask_cors import CORS, cross_origin
 from pymongo import MongoClient
 
 # Project
-# import utils
-from server import utils
+import utils
+# from server import utils
 
 # ======================================
 # >>> INITIALIZE
