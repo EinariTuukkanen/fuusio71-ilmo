@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Fuusio 70</title>
+
+    <link rel="icon" href="img/favicon1924.png" sizes="192x192" />
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/fuusio70.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'> -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <!-- <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="index.html">FUUSIO 70</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html">Etusivu</a>
+                    </li>
+                    <li>
+                        <a href="registration.html">Ilmoittautuminen</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+ -->
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/fuusio70header.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading">
+                      <!--   <h1>Ilmoittaudu</h1>
+                        <hr class="small">
+                        <span id="registrationInfo" class="subheading"></span> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <span id="registrationInfo" class="subheading">Olet jonossa sijalla ..., täytä ilmoittautumislomake alla vahvistaaksesi ilmoittautumisen. Sinulla on ... minuuttia aikaa ennen lomakkeen vanhentumista.</span>
+
+                <p>Pakolliset kysymykset on merkitty tähdellä (*).</p>
+                <!-- Registration Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
+                <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
+                <!-- NOTE: To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
+                <form name="sentMessage" id="registrationForm" novalidate>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>* Nimi</label>
+                            <input type="text" class="form-control" placeholder="* Etunimi Sukunimi" id="name" name="name" required data-validation-required-message="Ole hyvä ja ilmoita nimesi.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>* Sähköposti</label>
+                            <input type="email" class="form-control" placeholder="* Sähköposti" id="email" name="email" required data-validation-required-message="Ole hyvä ja ilmoita sähköpostisi" data-validation-validemail-message="Sähköposti ei ole oikeassa muodossa">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group form-row form-group controls">
+                        <div class="form-group col-xs-4">
+                            <label>* Olen...</label>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="col-xs-8 controls">
+                            <select name="status" class="form-control form-select" required data-validation-required-message="Valitse yksi">
+                                <option value="">-- Valitse --</option>
+                                <!-- <option class="invite-status" value="inviteGuest">Kutsuvieras</option> -->
+                                <option value="student">Opiskelija (90€)</option>
+                                <option value="notStudent">Ei-opiskelija (110€)</option>
+                                <option value="supporter">Kannattaja (200€)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row control-group form-row form-group controls">
+                        <div class="form-group col-xs-4">
+                            <label>* Killan tai alumnin jäsentyyppi</label>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="col-xs-8 controls">
+                            <select name="guildStatus" class="form-control form-select" required data-validation-required-message="Valitse yksi">
+                                <option value="">-- Valitse --</option>
+                                <option value="currentMember">Killan tai alumnin nykyinen jäsen tai tällaisen avec</option>
+                                <option value="exMember">Killan tai alumnin entinen jäsen tai tällaisen avec</option>
+                                <option value="other">Ei mikään edellisistä</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row control-group form-row form-group controls">
+                        <div class="col-xs-6">
+                            <label>* Ilmoittaudun myös sillikselle (+20€)</label>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="col-xs-3">
+                            <label class="radio-inline">
+                              <input type="radio" name="sillis" minchecked="1" data-validation-minchecked-message="Valitse toinen" value="true">Kyllä
+                            </label>
+                        </div>
+                        <div class="col-xs-3">
+                            <label class="radio-inline">
+                              <input type="radio" name="sillis" value="false">Ei
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row control-group form-row form-group controls">
+                        <div class="col-xs-6">
+                            <label>* Haluan antaa tervehdyksen coctail-tilaisuudessa</label>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="col-xs-3">
+                            <label class="radio-inline">
+                              <input type="radio" name="greeting" minchecked="1" data-validation-minchecked-message="Valitse toinen" value="true">Kyllä
+                            </label>
+                        </div>
+                        <div class="col-xs-3">
+                            <label class="radio-inline">
+                              <input type="radio" name="greeting" value="false">Ei
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Edustamani taho</label>
+                            <input type="text" class="form-control" placeholder="Edustamasi taho" id="represent" name="represent">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Pöytäseurue</label>
+                            <input type="text" class="form-control" placeholder="Pöytäseurue" id="table" name="table">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Avec</label>
+                            <input type="text" class="form-control" placeholder="Avecin nimi (Pöytäjärjestystä varten; avecin on ilmoittauduttava erikseen)" id="avec" name="avec">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Fuksivuosi</label>
+                            <input type="text" class="form-control" placeholder="Fuksivuosi" id="firstYear" name="firstYear">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group form-row form-group controls">
+                        <div class="form-group col-xs-4">
+                            <label>* Juomamenu</label>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="col-xs-8 controls">
+                            <select name="drinkMenu" class="form-control form-select" required data-validation-required-message="Valitse yksi">
+                                <option value="">-- Valitse --</option>
+                                <option value="alcoholic">Alkoholillinen</option>
+                                <option value="nonAlcoholic">Alkoholiton</option>
+                                <option value="onlyWines">Pelkät viinit, muuten alkoholiton</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Allergiat ja erikoisruokavalio</label>
+                            <textarea rows="2" class="form-control" placeholder="Allergiat ja erikoisruokavalio" id="allergies" name="allergies"></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Lisätietoja tai terveisiä</label>
+                            <textarea rows="2" class="form-control" placeholder="Lisätietoja tai terveisiä" id="additionalInfo" name="additionalInfo"></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group form-row form-group controls">
+                        <div class="col-xs-12">
+                            <p>Fyysikkokillan Historiateos ilmestyy keväällä 2017. Historiateos on ammattivoimin kirjoitettu noin 300 sivuinen, kovakantinen teos. Ennakkotilatut teokset varustetaan kirjoittaja Juho Kotakallion nimikirjoituksella.</p>
+                        </div>
+                        <div class="col-xs-6">
+                            <label>* Tilaan historiateoksen hintaan 35€</label>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="col-xs-3">
+                            <label class="radio-inline">
+                              <input type="radio" name="historyOrder" value="true" minchecked="1" data-validation-minchecked-message="Valitse toinen" onclick="showHistoryOrderDetails()">Kyllä
+                            </label>
+                        </div>
+                        <div class="col-xs-3">
+                            <label class="radio-inline">
+                              <input type="radio" name="historyOrder" value="false" onclick="hideHistoryOrderDetails()">Ei
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row control-group form-row history-order-details controls hidden">
+                        <div class="form-group col-xs-5">
+                            <label>Toimitustapa historiateokselle</label>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="col-xs-7 controls">
+                            <select id="historyDeliveryMethod" name="historyDeliveryMethod" class="form-control form-select">
+                                <option value="">-- Valitse --</option>
+                                <option value="pickup">Nouto kiltahuoneelta</option>
+                                <option value="deliverPost">Toimitus postitse (+10€)</option>
+                            </select>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group history-order-address hidden">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Jos valitsit toimituksen postitse, annathan postitusosoitteesi (osoite, postitoimipaikka ja postinumero)</label>
+                            <textarea rows="2" class="form-control" placeholder="Jos valitsit toimituksen postitse, annathan postitusosoitteesi (osoite, postitoimipaikka ja postinumero)" id="historyAddress" name="historyAddress"></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div id="success"></div>
+                    <div class="row">
+                        <div class="form-group col-xs-6">
+                            <button id="submitForm" type="submit" class="btn btn-submit btn-lg">Lähetä</button>
+                        </div>
+                        <div class="form-group col-xs-6 text-right">
+                            <button type="button" onclick="window.history.back()" class="btn btn-default btn-lg text-center">Takaisin</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://www.facebook.com/events/1178180328936888/" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Fyysikkokilta 2016-2017</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Registration Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="js/config.js"></script>
+    <script src="js/registration.js"></script>
+
+</body>
+
+</html>
