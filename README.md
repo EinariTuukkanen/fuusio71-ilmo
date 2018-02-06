@@ -12,8 +12,8 @@ Vanilla javascript + jQuery
 
 ```
 pip3 install -r requirements.txt
-python3 server/app.py
+python3 ilmo/app.py
 ```
 
-Then open up `index.html`.
+Then navigate to http://127.0.0.1:5000/
 
