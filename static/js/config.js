@@ -3,5 +3,5 @@
 // ============================
 
 // var API_BASE_URL = 'https://fuusio.pro/api';
-var API_BASE_URL = 'http://localhost:5000/api';
+var API_BASE_URL = 'http://159.89.5.0/api';
 var SESSION_TIMEOUT = 1800 // seconds

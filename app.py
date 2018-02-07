@@ -288,12 +288,15 @@ def get_database():
 settings = utils.load_config(
     app,
     get_database(),
-    # '/home/fuusio70-ilmo/server/config.ini'
-    '/home/einari/Documents/Dev/fuusio71-ilmo/config.ini'
+    '/var/www/fuusio71-ilmo/config.ini'
+    # '/home/einari/Documents/Dev/fuusio71-ilmo/ilmo/config.ini'
 )
 mail = Mail(app)
 
 app.register_blueprint(routes)
 application = app
 
-application.run()
+# application.run()
+
+if __name__ == '__main__':
+    application.run(host='0.0.0.0')
