@@ -86,16 +86,16 @@ def send_billing_mail(flask_mail, settings, user):
         email=user.get('email')
     ))
 
-    # sent_successfully = send_flask_mail(
-    #     flask_mail,
-    #     email_templates.get('MailHeader'),
-    #     email_templates.get('MailSender'),
-    #     user.get('email'),
-    #     email_body
-    # )
+    sent_successfully = send_flask_mail(
+        flask_mail,
+        email_templates.get('MailHeader'),
+        email_templates.get('MailSender'),
+        user.get('email'),
+        email_body
+    )
 
-    return True
-    # return sent_successfully
+    # return False
+    return sent_successfully
 
 
 def send_flask_mail(flask_mail, subject, from_email, to_email, body):

@@ -2,4 +2,3 @@ Flask
 flask-cors
 flask_mail
 pymongo
-bson

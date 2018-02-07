@@ -5,9 +5,9 @@
 
 var guildStatusRank = {
     'currentMember': 1,
-    'exMember': 2,
-    'other': 3,
-    '': 3,
+    'exMember': 1,
+    'other': 1,
+    '': 1,
 }
 
 // Helper function to insert users in html table
@@ -27,7 +27,7 @@ function insertUserToTable(index, table, user, excess, prioLimit) {
         row.style.backgroundColor = '#ffe7e7';
     }
     if (prioLimit) {
-        row.style.borderBottom = '3px solid #66b0df'
+        row.style.borderBottom = '2px dotted #0DFF92'
     }
 }
 
