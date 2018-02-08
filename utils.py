@@ -46,12 +46,13 @@ def load_config(flask_app, mongo_db, config_filename):
 def send_billing_mail(flask_mail, settings, user):
     email_templates = settings.get('EmailTemplates')
     billing = settings.get('Billing')
+    max_users = int(settings['App']['MaxUsers'])
 
     # Status price
     if user.get('status') == u'student':
         sum = int(billing.get('StudentPrice'))
-    elif user == u'supporter':
-        sum = int(billing.get('SupporterPrice'))
+    # elif user == u'supporter':
+        # sum = int(billing.get('SupporterPrice'))
     else:
         sum = int(billing.get('DefaultPrice'))
 
@@ -60,18 +61,26 @@ def send_billing_mail(flask_mail, settings, user):
         sum += int(billing.get('SillisPrice'))
 
     # History manuscript order price
-    if user.get('historyOrder') == 'true':
-        sum += int(billing.get('HistoryManuscriptPrice'))
+    # if user.get('historyOrder') == 'true':
+        # sum += int(billing.get('HistoryManuscriptPrice'))
 
     # History manuscript post price
-    if user.get('historyDeliveryMethod') == 'deliverPost':
-        sum += int(billing.get('PostDeliveryPrice'))
+    # if user.get('historyDeliveryMethod') == 'deliverPost':
+        # sum += int(billing.get('PostDeliveryPrice'))
 
-    timestamp = int(time())
-    if (timestamp >= 1485770400
-            and user.get('status') in ['student', 'notStudent']
-            and user.get('guildStatus') == 'currentMember'):
+    # timestamp = int(time())
+
+    # if (timestamp >= 1485770400
+    #         and user.get('status') in ['student', 'notStudent']
+    #         and user.get('guildStatus') == 'currentMember'):
+    #     letter = Template(email_templates.get('Bill'))
+    # else:
+    #     letter = Template(email_templates.get('ThankYouLetter'))
+
+    if user.get('status') in ['student', 'notStudent']:
         letter = Template(email_templates.get('Bill'))
+    elif int(user.get('index')) > max_users:
+        letter = Template(email_templates.get('QueueLetter'))
     else:
         letter = Template(email_templates.get('ThankYouLetter'))
 
