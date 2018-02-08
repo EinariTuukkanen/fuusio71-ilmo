@@ -133,7 +133,7 @@ def users_update():
         return json.dumps({'userId': str(user_id)})
 
     timestamp = old_user.get('timestamp')
-    user = validate_user(user, timestamp)
+    user = validate_user(user, timestamp, debug)
 
     user['referenceNumber'] = utils.get_reference_number(db)
     db.users.update({'_id': ObjectId(user_id)}, {'$set': user}, upsert=True)
@@ -216,18 +216,18 @@ class JSONEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, o)
 
 
-def validate_user(user, timestamp):
+def validate_user(user, timestamp, debug):
     valid_statuses = ['currentMember', 'inviteGuest', 'avec']
     default_status = 'currentMember'
+    if debug != 1:
+        # Before 16.2.2018 10 am (UTC) [1518775200.0] only allow invite guests
+        if timestamp < 1518775200:
+            valid_statuses = ['inviteGuest']
+            default_status = 'inviteGuest'
 
-    # Before 16.2.2018 10 am (UTC) [1518775200.0] only allow invite guests
-    if timestamp < 1518775200:
-        valid_statuses = ['inviteGuest']
-        default_status = 'inviteGuest'
-
-    # After 23.2.2018 21:55 (UTC) no more invite guests
-    if timestamp > 1519422900:
-        valid_statuses = ['currentMember', 'avec']
+        # After 23.2.2018 21:55 (UTC) no more invite guests
+        if timestamp > 1519422900:
+            valid_statuses = ['currentMember', 'avec']
 
     validated_user = {
         'additionalInfo': user.get('additionalInfo', ''),
@@ -243,13 +243,13 @@ def validate_user(user, timestamp):
             in ['true', 'false'] else 'false'),
         'status': (
             user.get('status') if user.get('status')
-            in valid_statuses
-            else default_status),
+            in ['student', 'notStudent', 'company']
+            else 'notStudent'),
         'timestamp': timestamp,
         'guildStatus': (
             user.get('guildStatus') if user.get('guildStatus')
-            in ['currentMember', 'inviteGuest', 'avec']
-            else 'currentMember'),
+            in valid_statuses
+            else default_status),
         'drinkMenu': (
             user.get('drinkMenu') if user.get('drinkMenu')
             in ['alcoholic', 'nonAlcoholic', 'onlyWines']
