@@ -429,8 +429,11 @@ input[type=radio]:checked ~ .radio-label {
   border-bottom: 3px solid #1f0044;
 }
 .table>tbody>tr>td {
-  border-bottom: 1px solid #1f0044;
+  border-top: 0;
 }
+/* .table>tbody>tr>td {
+  border-bottom: 1px solid #1f0044;
+} */
 @media only screen and (min-width: 1170px) {
   .intro-header {
     min-height: 600px;

@@ -3,20 +3,22 @@
 // ============================
 
 
-var guildStatusRank = {
-    'currentMember': 1,
-    'exMember': 1,
-    'other': 1,
-    '': 1,
-}
+// var guildStatusRank = {
+//     'currentMember': 1,
+//     'exMember': 1,
+//     'other': 1,
+//     '': 1,
+// }
 
 // Helper function to insert users in html table
 function insertUserToTable(index, table, user, excess, prioLimit) {
     $("#registeredUsers").find('tbody')
     .append($('<tr>')
-        .addClass('table-row')
         .append($('<td>')
-            .text(index)
+            .text(function() {
+                if (index > MAX_USERS) return index + ' (jono)';
+                return index;
+            })
         )
         .append($('<td>')
             .text(user.name.substring(0, 36))
@@ -26,8 +28,12 @@ function insertUserToTable(index, table, user, excess, prioLimit) {
             .text(user.table.substring(0, 36))
             .css('word-break', 'break-all')
         )
+        .css('borderBottom', function() {
+            if (index === MAX_USERS) return '2px dotted #0DFF92';
+            return '1px solid #1f0044';
+        })
     );
-
+    //  border-bottom: 1px solid #1f0044;
     // if (excess) {
     //     row.style.backgroundColor = '#ffe7e7';
     // }
@@ -105,7 +111,6 @@ $(function() {
         },
         error: function(response) {
             console.error('ERROR', response);
-   
         },
     });
 });

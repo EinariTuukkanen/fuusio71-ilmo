@@ -1,6 +1,5 @@
 # -*- coding=utf-8 -*-
 
-
 # ======================================
 # >>> IMPORTS
 # ======================================
@@ -23,7 +22,6 @@ from pymongo import MongoClient
 
 # Project
 import utils
-# from server import utils
 
 # ======================================
 # >>> INITIALIZE
@@ -167,15 +165,15 @@ def users_create():
     users = db.users
     users_list = list(users.find())
 
-    max_users = int(settings['App']['MaxUsers'])
-    priority_users = [
-        u for u in users_list if u.get('preRegistration', False) is True
-        or u.get('guildStatus', '') == 'currentMember'
-    ]
-    if len(priority_users) >= max_users:
-        # TODO: return error
-        print('[WARNING] Max number of users have registered')
-        return json.dumps({'userId': '', 'timestamp': timestamp})
+    # max_users = int(settings['App']['MaxUsers'])
+    # priority_users = [
+    #     u for u in users_list if u.get('preRegistration', False) is True
+    #     or u.get('guildStatus', '') == 'currentMember'
+    # ]
+    # if len(priority_users) >= max_users:
+    #     # TODO: return error
+    #     print('[WARNING] Max number of users have registered')
+    #     return json.dumps({'userId': '', 'timestamp': timestamp})
 
     dummy_user = {
         'additionalInfo': '',
@@ -191,6 +189,7 @@ def users_create():
         'represent': '',
         'drinkMenu': '',
         'guildStatus': '',
+        'index': len(users_list),
         'timestamp': timestamp
     }
     user_id = users.insert_one(dummy_user).inserted_id
@@ -268,6 +267,7 @@ def get_database():
     client = MongoClient('localhost', 27017)
     return client.fuusio70
 
+
 # ======================================
 # >>> RUN
 # ======================================
@@ -281,9 +281,9 @@ settings = utils.load_config(
 mail = Mail(app)
 
 app.register_blueprint(routes)
-application = app
+# application = app
 
 # application.run()
 
 if __name__ == '__main__':
-    application.run(host='0.0.0.0')
+    app.run(host='0.0.0.0')

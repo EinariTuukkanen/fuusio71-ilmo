@@ -144,7 +144,7 @@ $(function() {
             // var message = $("textarea#message").val();
             var formData = $('form').serializeObject();
 
-            console.debug('formData: ', formData);
+            // console.debug('formData: ', formData);
 
             var userId = localStorage.getItem('fuusioUserId');
 
@@ -190,7 +190,6 @@ $(function() {
                         .append("</button>");
                     $('#success > .alert-danger').append("<strong>Pahoittelut, palvelin ei vastaa, yritä myöhemmin uudestaan!</strong>");
                     $('#success > .alert-danger').append('</div>');
-
 
                     //clear all fields
                     $('#registrationForm').trigger("reset");
