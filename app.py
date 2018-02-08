@@ -133,7 +133,7 @@ def users_update():
         return json.dumps({'userId': str(user_id)})
 
     timestamp = old_user.get('timestamp')
-    user = validate_user(user, timestamp)
+    user = validate_user(user, timestamp, debug)
 
     user['referenceNumber'] = utils.get_reference_number(db)
     db.users.update({'_id': ObjectId(user_id)}, {'$set': user}, upsert=True)
@@ -159,8 +159,9 @@ def users_create():
 
     if (debug != 1):
         # Registration opens at
-        # 11/21/2016 @ 10:00am (UTC) [1479722400]
-        if timestamp < 1485770400:
+        # 11.02.2018 @ 10:00am (UTC) [1518343200]
+        # Closes 3.2.2018 @ 21:55 (UTC)
+        if timestamp < 1518343200 or timestamp > 1520027700:
             return json.dumps({'userId': '', 'timestamp': timestamp})
 
     users = db.users
@@ -182,19 +183,14 @@ def users_create():
         'avec': '',
         'email': '',
         'firstYear': '',
-        'historyAddress': '',
-        'historyDeliveryMethod': '',
-        'historyOrder': '',
         'name': '',
         'referenceNumber': '',
         'sillis': '',
         'status': '',
         'table': '',
-        'greeting': '',
         'represent': '',
         'drinkMenu': '',
         'guildStatus': '',
-        'preRegistration': False,
         'timestamp': timestamp
     }
     user_id = users.insert_one(dummy_user).inserted_id
@@ -220,15 +216,18 @@ class JSONEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, o)
 
 
-def validate_user(user, timestamp):
-    # HACK updating roles at 30.1.2017 12pm (gmt+2)
-    valid_statuses = ['inviteGuest']
-    default_status = 'inviteGuest'
-    preregistration = True
-    if timestamp >= 1485770400:
-        valid_statuses = ['student', 'notStudent', 'supporter']
-        default_status = 'notStudent'
-        preregistration = False
+def validate_user(user, timestamp, debug):
+    valid_statuses = ['currentMember', 'inviteGuest', 'avec']
+    default_status = 'currentMember'
+    if debug != 1:
+        # Before 16.2.2018 10 am (UTC) [1518775200.0] only allow invite guests
+        if timestamp < 1518775200:
+            valid_statuses = ['inviteGuest']
+            default_status = 'inviteGuest'
+
+        # After 23.2.2018 21:55 (UTC) no more invite guests
+        if timestamp > 1519422900:
+            valid_statuses = ['currentMember', 'avec']
 
     validated_user = {
         'additionalInfo': user.get('additionalInfo', ''),
@@ -236,37 +235,25 @@ def validate_user(user, timestamp):
         'avec': user.get('avec', ''),
         'email': user.get('email', ''),
         'firstYear': user.get('firstYear', ''),
-        'historyAddress': user.get('historyAddress', ''),
         'name': user.get('name', ''),
         'represent': user.get('represent', ''),
         'table': user.get('table', ''),
-        'greeting': (
-            user.get('greeting') if user.get('greeting')
-            in ['true', 'false'] else 'false'),
-        'historyOrder': (
-            user.get('historyOrder') if user.get('historyOrder')
-            in ['true', 'false'] else 'false'),
         'sillis': (
             user.get('sillis') if user.get('sillis')
             in ['true', 'false'] else 'false'),
         'status': (
             user.get('status') if user.get('status')
-            in valid_statuses
-            else default_status),
-        'historyDeliveryMethod': (
-            user.get('historyDeliveryMethod')
-            if user.get('historyDeliveryMethod')
-            in ['pickup', 'deliverPost'] else 'pickup'),
+            in ['student', 'notStudent', 'company']
+            else 'notStudent'),
         'timestamp': timestamp,
         'guildStatus': (
             user.get('guildStatus') if user.get('guildStatus')
-            in ['currentMember', 'exMember', 'other']
-            else 'other'),
+            in valid_statuses
+            else default_status),
         'drinkMenu': (
             user.get('drinkMenu') if user.get('drinkMenu')
             in ['alcoholic', 'nonAlcoholic', 'onlyWines']
             else 'N/A'),
-        'preRegistration': preregistration
     }
     return validated_user
 
@@ -288,8 +275,8 @@ def get_database():
 settings = utils.load_config(
     app,
     get_database(),
-    '/var/www/fuusio71-ilmo/config.ini'
-    # '/home/einari/Documents/Dev/fuusio71-ilmo/ilmo/config.ini'
+    # '/var/www/fuusio71-ilmo/config.ini'
+    '/home/einari/Documents/Dev/fuusio71-ilmo/config.ini'
 )
 mail = Mail(app)
 
