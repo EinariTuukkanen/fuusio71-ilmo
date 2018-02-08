@@ -44,56 +44,62 @@ $(function() {
         type: "GET",
         success: function(response) {
             var rawUsersData = JSON.parse(response);
-            var preUsers = rawUsersData.filter(
-                function(u) {
-                    return !!u.preRegistration;
-                }
-            );
-            var preUsers = preUsers.sort(
+            // var preUsers = rawUsersData.filter(
+            //     function(u) {
+            //         return !!u.preRegistration;
+            //     }
+            // );
+            // var preUsers = preUsers.sort(
+            //     function(a, b) {
+            //         return a.timestamp - b.timestamp;
+            //     }
+            // );
+
+            // var regularUsers = rawUsersData.filter(
+            //     function(u) {
+            //         return !u.preRegistration;
+            //     }
+            // );
+            // var regularUsers = regularUsers.sort(
+            //     function(a, b) {
+            //         var aRank = guildStatusRank[a.guildStatus];
+            //         var bRank = guildStatusRank[b.guildStatus];
+            //         if (aRank !== bRank) {
+            //             return aRank - bRank;
+            //         } else {
+            //             return a.timestamp - b.timestamp;
+            //         }
+            //     }
+            // );
+            // var usersData = preUsers.concat(regularUsers);
+
+            // var priorityUsers = usersData.filter(
+            //     function(u) {
+            //         return !!u.preRegistration || u.guildStatus === 'currentMember';
+            //     }
+            // );
+            // var count = priorityUsers.length;
+            // console.log('pre-registration + current members : ' + count);
+            var usersData = rawUsersData.sort(
                 function(a, b) {
                     return a.timestamp - b.timestamp;
                 }
             );
-
-            var regularUsers = rawUsersData.filter(
-                function(u) {
-                    return !u.preRegistration;
-                }
-            );
-            var regularUsers = regularUsers.sort(
-                function(a, b) {
-                    var aRank = guildStatusRank[a.guildStatus];
-                    var bRank = guildStatusRank[b.guildStatus];
-                    if (aRank !== bRank) {
-                        return aRank - bRank;
-                    } else {
-                        return a.timestamp - b.timestamp;
-                    }
-                }
-            );
-            var usersData = preUsers.concat(regularUsers);
-
-            var priorityUsers = usersData.filter(
-                function(u) {
-                    return !!u.preRegistration || u.guildStatus === 'currentMember';
-                }
-            );
-            var count = priorityUsers.length;
-            console.log('pre-registration + current members : ' + count);
             // if (priorityUsers.length < 456 && (new Date()).getTime() >= 1485770400000) {
             $('#registrationButtonContainer').removeClass('hidden');
             // }
-            var excess = false;
-            var prioLimit = false;
+            // var excess = false;
+            // var prioLimit = false;
             for (var i = 0; i < usersData.length; i++) {
-                if (i >= 455) {
-                    excess = true;
-                }
-                if (i == count - 1) {
-                    prioLimit = true;
-                }
-                insertUserToTable(i + 1, table, usersData[i], excess, prioLimit);
-                prioLimit = false;
+                //     if (i >= 455) {
+                //         excess = true;
+                //     }
+                //     if (i == count - 1) {
+                //         prioLimit = true;
+                //     }
+                insertUserToTable(i + 1, table, usersData[i]);
+                // insertUserToTable(i + 1, table, usersData[i], excess, prioLimit);
+                // prioLimit = false;
             }
        
         },
