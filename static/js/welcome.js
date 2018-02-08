@@ -12,23 +12,28 @@ var guildStatusRank = {
 
 // Helper function to insert users in html table
 function insertUserToTable(index, table, user, excess, prioLimit) {
-    var row = table.insertRow(-1);
-    var cellIndex = row.insertCell(0);
-    var cellName = row.insertCell(1);
-    var cellTable = row.insertCell(2);
+    $("#registeredUsers").find('tbody')
+    .append($('<tr>')
+        .addClass('table-row')
+        .append($('<td>')
+            .text(index)
+        )
+        .append($('<td>')
+            .text(user.name.substring(0, 36))
+            .css('word-break', 'break-word')
+        )
+        .append($('<td>')
+            .text(user.table.substring(0, 36))
+            .css('word-break', 'break-all')
+        )
+    );
 
-    cellIndex.innerHTML = index;
-    cellName.innerHTML = user.name.substring(0, 36);
-    cellName.style.wordBreak = 'break-word';
-    cellTable.innerHTML = user.table.substring(0, 36);
-    cellTable.style.wordBreak = 'break-all';
-
-    if (excess) {
-        row.style.backgroundColor = '#ffe7e7';
-    }
-    if (prioLimit) {
-        row.style.borderBottom = '2px dotted #0DFF92'
-    }
+    // if (excess) {
+    //     row.style.backgroundColor = '#ffe7e7';
+    // }
+    // if (prioLimit) {
+    //     row.style.borderBottom = '2px dotted #0DFF92'
+    // }
 }
 
 // On page load get users and insert them to table
