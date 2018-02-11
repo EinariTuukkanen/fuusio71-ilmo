@@ -77,10 +77,10 @@ def send_billing_mail(flask_mail, settings, user):
     # else:
     #     letter = Template(email_templates.get('ThankYouLetter'))
 
-    if user.get('status') in ['student', 'notStudent']:
-        letter = Template(email_templates.get('Bill'))
-    elif int(user.get('index')) > max_users:
+    if int(user.get('index')) > max_users:
         letter = Template(email_templates.get('QueueLetter'))
+    elif user.get('status') in ['student', 'notStudent']:
+        letter = Template(email_templates.get('Bill'))
     else:
         letter = Template(email_templates.get('ThankYouLetter'))
 

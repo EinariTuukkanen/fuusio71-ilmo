@@ -6,9 +6,9 @@
 
 # Python
 import json
+import datetime as dt
 import threading
 
-# import json_util
 from bson import ObjectId
 from time import time
 
@@ -16,8 +16,6 @@ from time import time
 from flask import Flask, request, Blueprint, render_template
 from flask_mail import Mail
 from flask_cors import CORS, cross_origin
-
-
 from pymongo import MongoClient
 
 # Project
@@ -150,6 +148,7 @@ def users_update():
 def users_create():
     """ Creates new empty user object """
     db = get_database()
+    now = dt.datetime.now()
     timestamp = int(time())
 
     settings = db.config.find_one()
@@ -158,22 +157,14 @@ def users_create():
     if (debug != 1):
         # Registration opens at
         # 11.02.2018 @ 10:00am (UTC) [1518343200]
-        # Closes 3.2.2018 @ 21:55 (UTC)
-        if timestamp < 1518343200 or timestamp > 1520027700:
+        # Closes 2.3.2018 @ 21:55 (UTC)
+        # if timestamp < 1518343200 or timestamp > 1520027700:
+        if (now < dt.datetime(2018, 2, 11, 10, 0) or
+                now > dt.datetime(2018, 3, 2, 21, 55)):
             return json.dumps({'userId': '', 'timestamp': timestamp})
 
     users = db.users
     users_list = list(users.find())
-
-    # max_users = int(settings['App']['MaxUsers'])
-    # priority_users = [
-    #     u for u in users_list if u.get('preRegistration', False) is True
-    #     or u.get('guildStatus', '') == 'currentMember'
-    # ]
-    # if len(priority_users) >= max_users:
-    #     # TODO: return error
-    #     print('[WARNING] Max number of users have registered')
-    #     return json.dumps({'userId': '', 'timestamp': timestamp})
 
     dummy_user = {
         'additionalInfo': '',
@@ -218,14 +209,17 @@ class JSONEncoder(json.JSONEncoder):
 def validate_user(user, timestamp, debug):
     valid_statuses = ['currentMember', 'inviteGuest', 'avec']
     default_status = 'currentMember'
+    now = dt.datetime.fromtimestamp(timestamp)
     if debug != 1:
-        # Before 16.2.2018 10 am (UTC) [1518775200.0] only allow invite guests
-        if timestamp < 1518775200:
+        # Before 16.2.2018 10 am (UTC) only allow invite guests
+        # if timestamp < 1518775200:
+        if now < dt.datetime(2018, 2, 16, 10, 0):
             valid_statuses = ['inviteGuest']
             default_status = 'inviteGuest'
 
         # After 23.2.2018 21:55 (UTC) no more invite guests
-        if timestamp > 1519422900:
+        # if timestamp > 1519422900:
+        if now > dt.datetime(2018, 2, 23, 21, 55):
             valid_statuses = ['currentMember', 'avec']
 
     validated_user = {
