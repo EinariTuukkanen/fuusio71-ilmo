@@ -103,10 +103,10 @@ def users_update():
     debug = int(settings['App']['Debug'])
 
     if (debug != 1):
-        timestamp = int(time())
+        now = dt.datetime.now()
         # Registration opens at
-        # 11/21/2016 @ 10:00am (UTC) [1479722400]
-        if timestamp < 1485770400:
+        # 12.2.2018 @ 10:00am (UTC) [1479722400]
+        if now < dt.datetime(2018, 2, 12, 10, 0):
             return 'Registration has not opened yet'
 
     raw_data = request.data
