@@ -165,16 +165,6 @@ def users_create():
     users = db.users
     users_list = list(users.find())
 
-    # max_users = int(settings['App']['MaxUsers'])
-    # priority_users = [
-    #     u for u in users_list if u.get('preRegistration', False) is True
-    #     or u.get('guildStatus', '') == 'currentMember'
-    # ]
-    # if len(priority_users) >= max_users:
-    #     # TODO: return error
-    #     print('[WARNING] Max number of users have registered')
-    #     return json.dumps({'userId': '', 'timestamp': timestamp})
-
     dummy_user = {
         'additionalInfo': '',
         'allergies': '',
@@ -219,7 +209,7 @@ def validate_user(user, timestamp, debug):
     valid_statuses = ['currentMember', 'inviteGuest', 'avec']
     default_status = 'currentMember'
     if debug != 1:
-        # Before 16.2.2018 10 am (UTC) [1518775200.0] only allow invite guests
+        # Before 16.2.2018 10 am (UTC) only allow invite guests
         if timestamp < 1518775200:
             valid_statuses = ['inviteGuest']
             default_status = 'inviteGuest'
