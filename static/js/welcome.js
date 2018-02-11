@@ -33,13 +33,6 @@ function insertUserToTable(index, table, user, excess, prioLimit) {
             return '1px solid #1f0044';
         })
     );
-    //  border-bottom: 1px solid #1f0044;
-    // if (excess) {
-    //     row.style.backgroundColor = '#ffe7e7';
-    // }
-    // if (prioLimit) {
-    //     row.style.borderBottom = '2px dotted #0DFF92'
-    // }
 }
 
 // On page load get users and insert them to table
@@ -92,7 +85,10 @@ $(function() {
                 }
             );
             // if (priorityUsers.length < 456 && (new Date()).getTime() >= 1485770400000) {
-            $('#registrationButtonContainer').removeClass('hidden');
+            var now = (new Date()).getTime();
+            if (now > 1518422400000 && now < 1520027700000) {
+                $('#registrationButtonContainer').removeClass('hidden');
+            }
             // }
             // var excess = false;
             // var prioLimit = false;

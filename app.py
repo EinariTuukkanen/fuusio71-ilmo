@@ -98,7 +98,6 @@ def users_count():
 def users_update():
     """ Update user object """
     db = get_database()
-
     settings = db.config.find_one()
     debug = int(settings['App']['Debug'])
 
@@ -107,10 +106,11 @@ def users_update():
         # Registration opens at
         # 12.2.2018 @ 10:00am (UTC) [1479722400]
         if now < dt.datetime(2018, 2, 12, 10, 0):
+            print('Registration has not opened yet')
             return 'Registration has not opened yet'
 
     raw_data = request.data
-    print(str(raw_data.decode("utf-8")))
+    # print(str(raw_data.decode("utf-8")))
     try:
         if not raw_data:
             raise ValueError('request.data was empty')
@@ -162,8 +162,8 @@ def users_create():
         # if timestamp < 1518343200 or timestamp > 1520027700:
         if (now < dt.datetime(2018, 2, 12, 10, 0) or
                 now > dt.datetime(2018, 3, 2, 21, 55)):
+            print('Registration has not opened yet')
             return json.dumps({'userId': '', 'timestamp': timestamp})
-
     users = db.users
     users_list = list(users.find())
 
