@@ -30,9 +30,9 @@ function updateInfoText(userTime) {
             var diff = timestamp - userTime;
 
             var leftMins =  parseInt(15 - diff/60);
-            console.debug('Still time left: ', leftMins);
-            console.debug(userTime, userCount);
-            var count = userCount || 'X';
+            // console.log('Still time left: ', leftMins);
+            // console.log(userTime, userCount);
+            var count = userCount === '0' ? 'X' : userCount;
 
             $('#registrationInfo').text(
                 'Olet jonossa sijalla ' + count + ', täytä ilmoittautumislomake alla vahvistaaksesi ilmoittautumisen. ' +
