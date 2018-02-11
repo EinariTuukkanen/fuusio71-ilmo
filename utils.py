@@ -50,15 +50,15 @@ def send_billing_mail(flask_mail, settings, user):
 
     # Status price
     if user.get('status') == u'student':
-        sum = int(billing.get('StudentPrice'))
+        bill_sum = int(billing.get('StudentPrice'))
     # elif user == u'supporter':
         # sum = int(billing.get('SupporterPrice'))
     else:
-        sum = int(billing.get('DefaultPrice'))
+        bill_sum = int(billing.get('DefaultPrice'))
 
     # Sillis price
     if user.get('sillis') == 'true':
-        sum += int(billing.get('SillisPrice'))
+        bill_sum += int(billing.get('SillisPrice'))
 
     # History manuscript order price
     # if user.get('historyOrder') == 'true':
@@ -77,7 +77,7 @@ def send_billing_mail(flask_mail, settings, user):
     # else:
     #     letter = Template(email_templates.get('ThankYouLetter'))
 
-    if int(user.get('index')) > max_users:
+    if int(user.get('index')) >= max_users:
         letter = Template(email_templates.get('QueueLetter'))
     elif user.get('status') in ['student', 'notStudent']:
         letter = Template(email_templates.get('Bill'))
@@ -85,7 +85,7 @@ def send_billing_mail(flask_mail, settings, user):
         letter = Template(email_templates.get('ThankYouLetter'))
 
     # Format template
-    email_templates.update({'sum': sum})
+    email_templates.update({'sum': bill_sum})
     email_templates.update(user)
     email_templates.update({'br': '\n'})
     email_body = letter.safe_substitute(email_templates)

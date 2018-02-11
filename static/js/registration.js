@@ -30,9 +30,9 @@ function updateInfoText(userTime) {
             var diff = timestamp - userTime;
 
             var leftMins =  parseInt(15 - diff/60);
-            console.debug('Still time left: ', leftMins);
-            console.debug(userTime, userCount);
-            var count = userCount || 'X';
+            // console.log('Still time left: ', leftMins);
+            // console.log(userTime, userCount);
+            var count = userCount === '0' ? 'X' : userCount;
 
             $('#registrationInfo').text(
                 'Olet jonossa sijalla ' + count + ', täytä ilmoittautumislomake alla vahvistaaksesi ilmoittautumisen. ' +
@@ -149,7 +149,7 @@ $(function() {
             var userId = localStorage.getItem('fuusioUserId');
 
             if (!userId) {
-                console.debug('Userid not found!');
+                alert('Ilmoittautuminen ei onnistunut, ilmo ei ole auki.');
                 return
             }
             var data = {formData: formData, userId: userId};
@@ -188,7 +188,7 @@ $(function() {
                     $('#success').html("<div class='alert alert-danger'>");
                     $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
-                    $('#success > .alert-danger').append("<strong>Pahoittelut, palvelin ei vastaa, yritä myöhemmin uudestaan!</strong>");
+                    $('#success > .alert-danger').append("<strong>Pahoittelut, palvelin ei vastaa tai ilmo on kiinni, yritä myöhemmin uudestaan!</strong>");
                     $('#success > .alert-danger').append('</div>');
 
                     //clear all fields
@@ -234,6 +234,24 @@ function showHistoryOrderDetails() {
 function hideHistoryOrderDetails() {
     $('.history-order-details').addClass('hidden');
     $('.history-order-address').addClass('hidden');
+}
+
+var now = (new Date()).getTime();
+if (now >= 1518775200000) {
+    $('#guildStatus').append($('<option>', {
+        value: 'currentMember',
+        text: 'Fyysikkokillan nykyinen jäsen'
+    }));
+    $('#guildStatus').append($('<option>', {
+        value: 'avec',
+        text: 'Fyysikkokiltalaisen avec'
+    }));
+}
+if (now <= 1519422900000) {
+    $('#guildStatus').append($('<option>', {
+        value: 'inviteGuest',
+        text: 'Kutsuvieras'
+    }));
 }
 
 // $("#historyDeliveryMethod").change(function() {

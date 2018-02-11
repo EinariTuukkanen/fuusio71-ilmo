@@ -96,11 +96,11 @@
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="col-xs-8 controls">
-                            <select name="guildStatus" class="form-control form-select" required data-validation-required-message="Valitse yksi">
+                            <select id="guildStatus" name="guildStatus" class="form-control form-select" required data-validation-required-message="Valitse yksi">
                                 <option value="">-- Valitse --</option>
+                                <!-- <option value="inviteGuest">Kutsuvieras</option>
                                 <option value="currentMember">Fyysikkokillan nykyinen jäsen</option>
-                                <option value="inviteGuest">Kutsuvieras</option>
-                                <option value="avec">Fyysikkokiltalaisen avec</option>
+                                <option value="avec">Fyysikkokiltalaisen avec</option> -->
                                 <!-- <option value="other">Ei mikään edellisistä</option> -->
                             </select>
                         </div>
@@ -171,7 +171,7 @@
                             <label>Edustamasi taho</label>
                             <input type="text" class="form-control" placeholder="Edustamasi taho" id="represent" name="represent">
                             <p class="help-block text-danger"></p>
-                            <p class="help-block info">Edustamasi taho, mikäli haluatte antaa tervehdyksen Fyysikkokillan raadille</p>
+                            <p class="help-block info">Ilmoita edustamasi taho, mikäli haluatte antaa tervehdyksen Fyysikkokillan raadille cocktail-tilaisuudessa</p>
                         </div>
                     </div>
                     <div class="row control-group">
