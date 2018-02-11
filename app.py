@@ -129,7 +129,8 @@ def users_update():
         return json.dumps({'userId': str(user_id)})
 
     timestamp = old_user.get('timestamp')
-    user = validate_user(user, timestamp, debug)
+    index = old_user.get('index')
+    user = validate_user(user, timestamp, index, debug)
 
     user['referenceNumber'] = utils.get_reference_number(db)
     db.users.update({'_id': ObjectId(user_id)}, {'$set': user}, upsert=True)
@@ -156,10 +157,10 @@ def users_create():
 
     if (debug != 1):
         # Registration opens at
-        # 11.02.2018 @ 10:00am (UTC) [1518343200]
+        # 12.02.2018 @ 10:00am (UTC) [1518343200]
         # Closes 2.3.2018 @ 21:55 (UTC)
         # if timestamp < 1518343200 or timestamp > 1520027700:
-        if (now < dt.datetime(2018, 2, 11, 10, 0) or
+        if (now < dt.datetime(2018, 2, 12, 10, 0) or
                 now > dt.datetime(2018, 3, 2, 21, 55)):
             return json.dumps({'userId': '', 'timestamp': timestamp})
 
@@ -206,7 +207,7 @@ class JSONEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, o)
 
 
-def validate_user(user, timestamp, debug):
+def validate_user(user, timestamp, index, debug):
     valid_statuses = ['currentMember', 'inviteGuest', 'avec']
     default_status = 'currentMember'
     now = dt.datetime.fromtimestamp(timestamp)
@@ -247,6 +248,7 @@ def validate_user(user, timestamp, debug):
             user.get('drinkMenu') if user.get('drinkMenu')
             in ['alcoholic', 'nonAlcoholic', 'onlyWines']
             else 'N/A'),
+        'index': index
     }
     return validated_user
 
