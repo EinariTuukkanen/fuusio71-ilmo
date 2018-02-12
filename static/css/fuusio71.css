@@ -436,7 +436,7 @@ input[type=radio]:checked ~ .radio-label {
 } */
 @media only screen and (min-width: 1170px) {
   .intro-header {
-    min-height: 600px;
+    min-height: 800px;
     border-bottom: 3px solid #56afc9;
   }
   .navbar-custom {
