@@ -181,6 +181,7 @@ def users_create():
         'represent': '',
         'drinkMenu': '',
         'guildStatus': '',
+        'greeting': '',
         'index': len(users_list),
         'timestamp': timestamp
     }
@@ -248,6 +249,9 @@ def validate_user(user, timestamp, index, debug):
             user.get('drinkMenu') if user.get('drinkMenu')
             in ['alcoholic', 'nonAlcoholic', 'onlyWines']
             else 'N/A'),
+        'greeting': (
+            user.get('greeting') if user.get('greeting')
+            in ['true', 'false'] else 'false'),
         'index': index
     }
     return validated_user
