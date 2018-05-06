@@ -1,0 +1,37 @@
+body, html {
+    background-color: #100721;
+    height: 100%;
+    margin: 0;
+}
+#countdown {
+    color: #fe23cd;
+    text-shadow: 0 0 20px #a80aa6;
+    font-family: 'Orbitron', sans-serif;
+}
+.header {
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+}
+.middle {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.bgimg {
+    opacity: 0.5;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../img/fissio_bg.jpeg");
+    height: 100%;
+}
+.fii {
+    width: 270px;
+}
+@media only screen and (max-width: 768px) {
+    .middle {
+        width: 100%;
+    }
+}
