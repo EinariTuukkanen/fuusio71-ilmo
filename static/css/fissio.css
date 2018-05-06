@@ -20,7 +20,7 @@ body, html {
     text-align: center;
 }
 .bgimg {
-    opacity: 0.5;
+    opacity: 0.3;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -33,5 +33,8 @@ body, html {
 @media only screen and (max-width: 768px) {
     .middle {
         width: 100%;
+    }
+    #countdown {
+        font-size: 28px;
     }
 }
