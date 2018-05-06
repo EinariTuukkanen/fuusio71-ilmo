@@ -39,7 +39,7 @@ routes = Blueprint('ilmo', __name__, url_prefix='/api')
 @app.route('/', methods=['GET'])
 @cross_origin(origins='*')
 def homepage():
-    return render_template('index.html')
+    return render_template('fissio.html')
 
 
 @app.route('/registration', methods=['GET'])
