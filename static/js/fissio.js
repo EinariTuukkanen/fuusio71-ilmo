@@ -25,3 +25,8 @@ function pad(num) {
     while (s.length < 2) s = "0" + s;
     return s;
 }
+
+$("#register-button").click(function() {
+    $("#register-form").removeClass("hidden");
+    $("#content").addClass("hidden");
+});

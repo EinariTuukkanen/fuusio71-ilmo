@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <!--
-___________.__              .__                                  
 \_   _____/|__| ______ _____|__| ____                            
  |    __)  |  |/  ___//  ___/  |/  _ \                           
  |     \   |  |\___ \ \___ \|  (  <_> )                          
  \___  /   |__/____  >____  >__|\____/                           
      \/            \/     \/                                     
-________  ________     ________   _______________  ____  ______  
-\_____  \ \_____  \   /   __   \  \_____  \   _  \/_   |/  __  \ 
- /  ____/   _(__  <   \____    /   /  ____/  /_\  \|   |>      < 
-/       \  /       \     /    /   /       \  \_/   \   /   --   \
-\_______ \/______  / /\ /____/ /\ \_______ \_____  /___\______  /
-        \/       \/  \/        \/         \/     \/           \/
-
+_______ _______      ________   _______________  ____  ______  
+\_____  \\   _  \    /   __   \  \_____  \   _  \/_   |/  __  \ 
+  _(__  </  /_\  \   \____    /   /  ____/  /_\  \|   |>      < 
+ /       \  \_/   \     /    /   /       \  \_/   \   /   --   \
+/______  /\_____  / /\ /____/ /\ \_______ \_____  /___\______  /
+       \/       \/  \/        \/         \/     \/           \/ 
 Fyysikkokillan perinteinen puolivuotisjuhla tekee paluun entistä ehompana. Stay tuned!
  -->
 <head>
@@ -38,12 +36,23 @@ Fyysikkokillan perinteinen puolivuotisjuhla tekee paluun entistä ehompana. Stay
 </head>
 
 <body>
-    <div class="bgimg"></div>
+    <div id="bgimg" class="bgimg"></div>
     <div class="middle">
-        <img class="fii" src="img/pellefii.png" />
-        <h1 class="header">Fissio tulee, tulethan sinäkin?</h1>
-        <h1 id="countdown"></h1>
+        <div id="content">
+            <img class="fii" src="img/pellefii.png" />
+            <h1 class="header">Fissio tulee, tulethan sinäkin?</h1>
+            <h1 id="countdown"></h1>
+            <br />
+            <button id="register-button" class="btn btn-submit btn-lg">
+                <span>Ilmoittaudu</span>
+            </button>
+        </div>
+        <div id="register-form" class="hidden">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeX63MKpAI2cyFcnPdVYffdPZZ8NxJ_yYAbeUSdJlNiau_fTA/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Ladataan...</iframe>
+        </div>
     </div>
+    
+    <script src="vendor/jquery/jquery.min.js"></script>
     <script src="js/fissio.js"></script>
 </body>
 </html>

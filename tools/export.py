@@ -23,6 +23,4 @@ with open('users.csv', 'w') as csvfile:
     writer.writeheader()
     for user in users:
         user['price'] = calculate_price(user)
-        print(user)
         writer.writerow(user)
-
