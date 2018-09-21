@@ -29,4 +29,5 @@ function pad(num) {
 $("#register-button").click(function() {
     $("#register-form").removeClass("hidden");
     $("#content").addClass("hidden");
+    $("#bgimg").addClass("hidden");
 });
