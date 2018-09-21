@@ -2,6 +2,7 @@ body, html {
     background-color: #100721;
     height: 100%;
     margin: 0;
+    overflow-y: hidden;
 }
 #countdown {
     color: #fe23cd;
@@ -14,11 +15,10 @@ body, html {
 }
 .middle {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    overflow-y: hidden;
     width: 50%;
 }
 .bgimg {
@@ -37,8 +37,9 @@ body, html {
 }
 #register-form {
     margin: auto;
-    margin-top: 200px;
     max-width: 640px;
+    max-height: 800px;
+    height: 800px;
 }
 .btn {
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -82,5 +83,9 @@ body, html {
     }
     #countdown {
         font-size: 28px;
+    }
+    #register-form {
+        max-height: 600px;
+        height: 600px;
     }
 }
