@@ -275,6 +275,13 @@ footer .copyright {
   resize: none;
   height: 50px;
   overflow:hidden;
+  background-color: #ffbc55;
+  border: 1px solid #000;
+  border-radius: 30px;
+  padding-left: 15px;
+}
+.floating-label-form-group textarea {
+  padding-top: 10px;
 }
 .floating-label-form-group label {
   display: block;
@@ -432,6 +439,7 @@ img::-moz-selection {
   list-style-type: none !important;
   color: #dd3b26;
   font-size: 14px;
+  padding: 0;
 }
 .table-mobile-friendly {
   word-break: break-all;

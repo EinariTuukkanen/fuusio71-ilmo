@@ -29,7 +29,7 @@ function insertUserToTable(index, table, user, excess, prioLimit) {
             .css('word-break', 'break-all')
         )
         .css('borderBottom', function() {
-            if (index === MAX_USERS) return '2px dotted #0DFF92';
+            if (index === MAX_USERS) return '4px dashed #dd3b26';
             return '1px solid #1f0044';
         })
     );
