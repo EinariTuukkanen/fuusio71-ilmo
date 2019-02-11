@@ -36,7 +36,7 @@ h6 {
   margin: 0;
 }
 .container {
-  padding-top: 20px;
+  margin-top: 30px;
   background-color: #f5a730;
   /* background-image: url('../img/posternoise.png'); */
   /* background-repeat: repeat; */
@@ -577,6 +577,10 @@ select:-webkit-autofill:focus {
   /* MOBILE */
   .table-mobile-friendly {
     font-size: 16px;
+  }
+  .container {
+    margin-top: 10px;
+    width: 95%;
   }
   .form-control::placeholder {
     color: #1848b5;
