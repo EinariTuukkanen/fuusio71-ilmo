@@ -91,7 +91,7 @@ blockquote {
 hr { 
   border : 0;
   height: 3px; 
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(24, 72, 181, 0.75), rgba(0, 0, 0, 0)); 
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(187, 118, 0, 0.75), rgba(0, 0, 0, 0)); 
 }
 hr.small {
   max-width: 100px;
@@ -259,7 +259,6 @@ footer .copyright {
   font-size: 14px;
   position: relative;
   margin-bottom: 15px;
-  border-bottom: 1px dashed #333;
 }
 .floating-label-form-group input,
 .floating-label-form-group textarea {
@@ -268,7 +267,6 @@ footer .copyright {
   padding-right: 0;
   padding-left: 0;
   border: none;
-  border-radius: 0;
   font-size: 32px;
   background: none;
   box-shadow: none !important;
@@ -423,11 +421,14 @@ img::-moz-selection {
   background-color: rgba(0,0,0,0);
   border: 0;
   height: 50px;
-  border-bottom: 1px dashed #333;
-  /* border: 1px solid #66b0df; */
+  font-size: 22px;
+  background-color: #ffbc55;
+  border: 1px solid #000;
+  border-radius: 30px;
+  padding-left: 15px;
 }
 .form-select:focus {
-  border-bottom: 1px dashed #333;
+  border: 1px solid #000;
 }
 .required-field::before {
   content: " * ";
