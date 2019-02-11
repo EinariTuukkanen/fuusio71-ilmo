@@ -583,7 +583,7 @@ select:-webkit-autofill:focus {
     width: 95%;
   }
   .form-control::placeholder {
-    color: #1848b5;
+    color: #bb7100;
     font-size: 16px;
   }
   .form-row label {
