@@ -173,8 +173,8 @@ def users_create():
         # 12.02.2018 @ 10:00am (UTC) [1518343200]
         # Closes 2.3.2018 @ 21:55 (UTC)
         # if timestamp < 1518343200 or timestamp > 1520027700:
-        if (now < dt.datetime(2018, 2, 12, 10, 0) or
-                now > dt.datetime(2018, 3, 2, 21, 55)):
+        # if (now < dt.datetime(2019, 2, 12, 10, 0) or
+        if (now > dt.datetime(2019, 2, 28, 21, 59)):
             print('Registration has not opened yet')
             return json.dumps({'userId': '', 'timestamp': timestamp})
     users = db.users
@@ -228,14 +228,16 @@ def validate_user(user, timestamp, index, debug):
     if debug != 1:
         # Before 16.2.2018 10 am (UTC) only allow invite guests
         # if timestamp < 1518775200:
-        if now < dt.datetime(2018, 2, 16, 10, 0):
+        if now < dt.datetime(2019, 2, 18, 10, 0):
             valid_statuses = ['inviteGuest']
             default_status = 'inviteGuest'
 
         # After 23.2.2018 21:55 (UTC) no more invite guests
         # if timestamp > 1519422900:
-        if now > dt.datetime(2018, 2, 23, 21, 55):
+        if now > dt.datetime(2019, 2, 24, 21, 59):
             valid_statuses = ['currentMember', 'avec']
+        
+        valid_statuses.append('company')
 
     validated_user = {
         'additionalInfo': user.get('additionalInfo', ''),

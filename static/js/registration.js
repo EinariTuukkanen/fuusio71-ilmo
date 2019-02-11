@@ -237,7 +237,8 @@ function hideHistoryOrderDetails() {
 }
 
 var now = (new Date()).getTime();
-if (now >= 1518775200000) {
+// 1550491200000 = 18.2.2019, 12:00 UTC
+if (now >= (1550491200000 - 2 * 60 * 60 * 1000)) {
     $('#guildStatus').append($('<option>', {
         value: 'currentMember',
         text: 'Fyysikkokillan nykyinen jäsen'
@@ -247,12 +248,17 @@ if (now >= 1518775200000) {
         text: 'Fyysikkokiltalaisen avec'
     }));
 }
-if (now <= 1519422900000) {
+// 1551052740000 = 24.2.2019, 23:59 UTC
+if (now <= (1551052740000 - 2 * 60 * 60 * 1000)) {
     $('#guildStatus').append($('<option>', {
         value: 'inviteGuest',
         text: 'Kutsuvieras'
     }));
 }
+$('#guildStatus').append($('<option>', {
+    value: 'company',
+    text: 'Yritysedustaja'
+}));
 
 // $("#historyDeliveryMethod").change(function() {
 //     if ($('#historyDeliveryMethod').val() == 'deliverPost') {
