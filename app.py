@@ -39,7 +39,7 @@ routes = Blueprint('ilmo', __name__, url_prefix='/api')
 @app.route('/', methods=['GET'])
 @cross_origin(origins='*')
 def homepage():
-    return render_template('fissio.html')
+    return render_template('index.html')
 
 
 @app.after_request
@@ -288,8 +288,8 @@ def get_database():
 settings = utils.load_config(
     app,
     get_database(),
-    # '/var/www/fuusio71-ilmo/config.ini'
-    '/home/einari/Documents/Dev/fuusio71-ilmo/config.ini'
+    # '/var/www/fuusio72-ilmo/config.ini'
+    '/home/einari/Dev/fuusio72-ilmo/config.ini'
 )
 mail = Mail(app)
 
@@ -299,4 +299,5 @@ app.register_blueprint(routes)
 # application.run()
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    print('Starting app')
+    app.run()  # host='0.0.0.0'

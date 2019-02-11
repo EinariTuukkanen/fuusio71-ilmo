@@ -29,7 +29,7 @@ function updateInfoText(userTime) {
             var timestamp = Math.floor(Date.now() / 1000);
             var diff = timestamp - userTime;
 
-            var leftMins =  parseInt(15 - diff/60);
+            var leftMins =  parseInt(30 - diff/60);
             // console.log('Still time left: ', leftMins);
             // console.log(userTime, userCount);
             var count = userCount === '0' ? 'X' : userCount;
