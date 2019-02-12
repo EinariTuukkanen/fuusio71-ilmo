@@ -222,7 +222,7 @@ class JSONEncoder(json.JSONEncoder):
 
 
 def validate_user(user, timestamp, index, debug):
-    valid_statuses = ['currentMember', 'inviteGuest', 'avec']
+    valid_statuses = ['currentMember', 'inviteGuest']
     default_status = 'currentMember'
     now = dt.datetime.fromtimestamp(timestamp)
     if debug != 1:
@@ -235,10 +235,8 @@ def validate_user(user, timestamp, index, debug):
         # After 23.2.2018 21:55 (UTC) no more invite guests
         # if timestamp > 1519422900:
         if now > dt.datetime(2019, 2, 24, 21, 59):
-            valid_statuses = ['currentMember', 'avec']
+            valid_statuses = ['currentMember']
         
-        valid_statuses.append('company')
-
     validated_user = {
         'additionalInfo': user.get('additionalInfo', ''),
         'allergies': user.get('allergies', ''),

@@ -361,7 +361,7 @@ input[type=radio]{
 input[type=radio]:checked ~ .radio-label {
   color: #333;
   font-family: 'Indie Flower', cursive;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: bold;
 }
 .table>thead>tr>th {
@@ -395,6 +395,15 @@ select:-webkit-autofill:focus {
 }
 @media only screen and (max-width: 768px) {
   /* MOBILE */
+  #registrationInfo {
+    font-size: 14px;
+  }
+  p {
+    font-size: 14px;
+  }
+  ul li {
+    font-size: 14px;
+  }
   .table-mobile-friendly {
     font-size: 16px;
   }
@@ -417,7 +426,7 @@ select:-webkit-autofill:focus {
     letter-spacing: 0;
   }
   h2 {
-    font-size: 30px;
+    font-size: 20px;
   }
   .form-control {
     font-size: 18px;
@@ -426,10 +435,13 @@ select:-webkit-autofill:focus {
   .floating-label-form-group textarea {
     font-size: 18px;
   }
+  input[type=radio]:checked ~ .radio-label {
+    font-size: 18px;
+  }
 }
 @media only screen and (max-width: 450px) {
   h1 {
-    font-size: 60px;
+    font-size: 55px;
     letter-spacing: 0;
   }
 }
