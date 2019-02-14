@@ -342,6 +342,9 @@ img::-moz-selection {
 .required-field::before {
   content: " * ";
 }
+.help-block.small {
+  font-size: 14px;
+}
 .help-block.info {
   color: #dd3b26;
 }

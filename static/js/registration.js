@@ -245,12 +245,16 @@ var now = (new Date()).getTime();
 // 1550491200000 = 18.2.2019, 12:00 UTC
 if (now >= new Date(2019, 1, 19, 12, 00, 0, 0)) {
    document.getElementById('#guildMember').disabled = false;
+   document.getElementById('#memberRegistrationDisclaimer').remove();
 } else {
    document.getElementById('#inviteGuest').checked = true;
 }
 // 1551052740000 = 24.2.2019, 23:59 UTC
 if (now <= new Date(2019, 1, 24, 23, 59, 0, 0)) {
    document.getElementById('#inviteGuest').disabled = false;
+   document.getElementById('#inviteRegistrationDisclaimer').remove();
+} else {
+   document.getElementById('#guildMember').checked = true;
 }
 // 1550491200000 = 18.2.2019, 12:00 UTC
 // if (now >= (1550491200000 - 2 * 60 * 60 * 1000)) {
