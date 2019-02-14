@@ -23,6 +23,7 @@ def load_config(flask_app, mongo_db, config_filename):
     settings = dict()
 
     # Update Flask email configs
+    print(config.items('FlaskEmail'))
     flask_app.config.update(**dict(config.items('FlaskEmail')))
 
     for section in config.sections():

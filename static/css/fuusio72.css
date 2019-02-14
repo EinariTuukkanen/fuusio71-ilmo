@@ -373,6 +373,10 @@ input[type=radio]:checked ~ .radio-label {
 .text-muted {
   color: #bb7100;
 }
+input[disabled] + span {
+  color: #ffbc55;
+  text-decoration: line-through;
+}
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 

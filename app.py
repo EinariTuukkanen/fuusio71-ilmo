@@ -175,7 +175,7 @@ def users_create():
         # if timestamp < 1518343200 or timestamp > 1520027700:
         # if (now < dt.datetime(2019, 2, 12, 10, 0) or
         if (now > dt.datetime(2019, 2, 28, 21, 59)):
-            print('Registration has not opened yet')
+            print('Registration has closed')
             return json.dumps({'userId': '', 'timestamp': timestamp})
     users = db.users
     users_list = list(users.find())
@@ -228,7 +228,7 @@ def validate_user(user, timestamp, index, debug):
     if debug != 1:
         # Before 16.2.2018 10 am (UTC) only allow invite guests
         # if timestamp < 1518775200:
-        if now < dt.datetime(2019, 2, 18, 10, 0):
+        if now < dt.datetime(2019, 2, 19, 10, 0):
             valid_statuses = ['inviteGuest']
             default_status = 'inviteGuest'
 
@@ -289,7 +289,7 @@ settings = utils.load_config(
     app,
     get_database(),
     # '/var/www/fuusio72-ilmo/config.ini'
-    '/home/einari/Dev/fuusio72-ilmo/config.ini'
+    '/home/einari/Dev/fuusio71-ilmo/config.ini'
 )
 mail = Mail(app)
 

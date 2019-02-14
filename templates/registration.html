@@ -83,13 +83,13 @@
                         </div>
                         <div class="col-xs-4">
                             <label class="radio-inline">
-                                <input type="radio" name="guildStatus" minchecked="1" data-validation-minchecked-message="Valitse toinen" value="currentMember">
+                                <input id="#guildMember" disabled type="radio" name="guildStatus" minchecked="1" data-validation-minchecked-message="Valitse toinen" value="currentMember">
                                 <span class="radio-label">Killan jäsen/avec</span>
                             </label>
                         </div>
                         <div class="col-xs-4">
                             <label class="radio-inline">
-                                <input type="radio" name="guildStatus" value="inviteGuest">
+                                <input id="#inviteGuest" disabled type="radio" name="guildStatus" value="inviteGuest">
                                 <span class="radio-label">Kutsuvieras</span>
                             </label>
                         </div>
@@ -203,7 +203,9 @@
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
-                    <br>
+                    <div style="text-align: right">
+                        <p class="info text-muted">Klikkaamalla "Lähetä" hyväksyt <a href="#" onclick="showPrivacy(event)">tietosuojaselosteen</a>.</p>
+                    </div>
                     <div id="success"></div>
                     <div class="row">
                         <div class="form-group col-xs-6">

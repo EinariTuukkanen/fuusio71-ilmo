@@ -45,6 +45,10 @@ function updateInfoText(userTime) {
     });
 }
 
+function showPrivacy(e) {
+    e.preventDefault();
+    alert("Luovuttamiasi tietoja käsitellään asianmukaisesti eikä niitä luovuteta eteenpäin.\n\nTietoja säilytetään EU:n sisällä DigitalOceanin palvelimilla.\n\nTietoja säilytetään tapahtuman jälkeen kunnes laskutus on valmis.\n\nTarkistaaksesi, muokataksesi tai poistaaksesi tietosi, ota yhteyttä rekisterinpitäjään: Einari Tuukkanen / enkkut@gmail.com");
+}
 
 $(function() {
     var userId = localStorage.getItem('fuusioUserId');
@@ -237,28 +241,39 @@ function hideHistoryOrderDetails() {
 }
 
 var now = (new Date()).getTime();
+
 // 1550491200000 = 18.2.2019, 12:00 UTC
-if (now >= (1550491200000 - 2 * 60 * 60 * 1000)) {
-    $('#guildStatus').append($('<option>', {
-        value: 'currentMember',
-        text: 'Fyysikkokillan nykyinen jäsen'
-    }));
-    $('#guildStatus').append($('<option>', {
-        value: 'avec',
-        text: 'Fyysikkokiltalaisen avec'
-    }));
+if (now >= new Date(2019, 1, 19, 12, 00, 0, 0)) {
+   document.getElementById('#guildMember').disabled = false;
+} else {
+   document.getElementById('#inviteGuest').checked = true;
 }
 // 1551052740000 = 24.2.2019, 23:59 UTC
-if (now <= (1551052740000 - 2 * 60 * 60 * 1000)) {
-    $('#guildStatus').append($('<option>', {
-        value: 'inviteGuest',
-        text: 'Kutsuvieras'
-    }));
+if (now <= new Date(2019, 1, 24, 23, 59, 0, 0)) {
+   document.getElementById('#inviteGuest').disabled = false;
 }
-$('#guildStatus').append($('<option>', {
-    value: 'company',
-    text: 'Yritysedustaja'
-}));
+// 1550491200000 = 18.2.2019, 12:00 UTC
+// if (now >= (1550491200000 - 2 * 60 * 60 * 1000)) {
+//     $('#guildStatus').append($('<option>', {
+//         value: 'currentMember',
+//         text: 'Fyysikkokillan nykyinen jäsen'
+//     }));
+//     $('#guildStatus').append($('<option>', {
+//         value: 'avec',
+//         text: 'Fyysikkokiltalaisen avec'
+//     }));
+// }
+// // 1551052740000 = 24.2.2019, 23:59 UTC
+// if (now <= (1551052740000 - 2 * 60 * 60 * 1000)) {
+//     $('#guildStatus').append($('<option>', {
+//         value: 'inviteGuest',
+//         text: 'Kutsuvieras'
+//     }));
+// }
+// $('#guildStatus').append($('<option>', {
+//     value: 'company',
+//     text: 'Yritysedustaja'
+// }));
 
 // $("#historyDeliveryMethod").change(function() {
 //     if ($('#historyDeliveryMethod').val() == 'deliverPost') {
