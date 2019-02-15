@@ -411,6 +411,9 @@ select:-webkit-autofill:focus {
   ul li {
     font-size: 14px;
   }
+  #registeredUsers {
+    font-size: 14px;
+  }
   .table-mobile-friendly {
     font-size: 16px;
   }
@@ -432,7 +435,7 @@ select:-webkit-autofill:focus {
     font-size: 70px;
     letter-spacing: 0;
   }
-  h2 {
+  h2, .section-heading {
     font-size: 20px;
   }
   .form-control {
