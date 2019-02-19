@@ -10,7 +10,7 @@ import datetime as dt
 import threading
 
 from bson import ObjectId
-from time import time
+from time import time, sleep
 
 # Third-party
 from flask import Flask, request, Blueprint, render_template
@@ -81,6 +81,22 @@ def users_read():
         } for u in users
     ]
     return JSONEncoder().encode(sanitized_users)
+
+
+@routes.route('/resend', methods=['GET'])
+@cross_origin(origins='*')
+def resend_failed_bills():
+    db = get_database()
+    settings = db.config.find_one()
+    users = db.users.find({'emailSent': False})
+    for user in users:
+        sent_successfully = utils.send_billing_mail(mail, settings, user)
+        db.users.update(
+            {'_id': ObjectId(user.get('_id'))},
+            {'$set': {'emailSent': sent_successfully}}
+        )
+        sleep(0.25)
+    return json.dumps({'status': 'done'})
 
 
 @routes.route('/users/<user_id>', methods=['GET'])
