@@ -67,7 +67,7 @@ $(function() {
             var inviteGuestsCount = inviteGuests.length;
 
             for (var i = 0; i < guildMembers.length; i++) {
-                insertUserToTable('registeredGuildMembers', i + 1 + inviteGuestsCount, guildMembers[i]);
+                insertUserToTable('registeredGuildMembers', i + 1, guildMembers[i]);
             }
         },
         error: function(response) {
