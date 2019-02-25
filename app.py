@@ -190,7 +190,7 @@ def users_create():
         # Closes 2.3.2018 @ 21:55 (UTC)
         # if timestamp < 1518343200 or timestamp > 1520027700:
         # if (now < dt.datetime(2019, 2, 12, 10, 0) or
-        if (now > dt.datetime(2019, 2, 28, 21, 59)):
+        if (now > dt.datetime(2019, 3, 28, 21, 59)):
             print('Registration has closed')
             return json.dumps({'userId': '', 'timestamp': timestamp})
     users = db.users
