@@ -2,74 +2,78 @@
 // >> WELCOME PAGE
 // ============================
 
-
 // Helper function to insert users in html table
 function insertUserToTable(id, index, user) {
-    $("#" + id).find('tbody')
-    .append($('<tr>')
-        .append($('<td>')
-            .text(function() {
-                if (index > MAX_USERS) return index + ' (jono)';
-                return index;
-            })
+  $("#" + id)
+    .find("tbody")
+    .append(
+      $("<tr>")
+        .append(
+          $("<td>").text(function() {
+            if (index > MAX_USERS) return index + " (jono)";
+            return index;
+          })
         )
-        .append($('<td>')
+        .append(
+          $("<td>")
             .text(user.name.substring(0, 36))
-            .css('word-break', 'break-word')
+            .css("word-break", "break-word")
         )
-        .append($('<td>')
+        .append(
+          $("<td>")
             .text(user.table.substring(0, 36))
-            .css('word-break', 'break-all')
+            .css("word-break", "break-all")
         )
-        .css('borderBottom', function() {
-            if (index === MAX_USERS) return '4px dashed #dd3b26';
-            return '1px solid #1f0044';
+        .css("borderBottom", function() {
+          if (index === MAX_USERS) return "4px dashed #dd3b26";
+          return "1px solid #1f0044";
         })
     );
 }
 
-
 // On page load get users and insert them to table
 $(function() {
-    $.ajax({
-        url: API_BASE_URL + '/users',
-        type: "GET",
-        success: function(response) {
-            var rawUsersData = JSON.parse(response);
+  $.ajax({
+    url: API_BASE_URL + "/users",
+    type: "GET",
+    success: function(response) {
+      var rawUsersData = JSON.parse(response);
 
-            var usersData = rawUsersData.sort(
-                function(a, b) {
-                    return a.timestamp - b.timestamp;
-                }
-            );
+      var usersData = rawUsersData.sort(function(a, b) {
+        return a.timestamp - b.timestamp;
+      });
 
-            var inviteGuests = rawUsersData.filter(function(a) {
-                return a.guildStatus === 'inviteGuest';
-            });
+      var inviteGuests = rawUsersData.filter(function(a) {
+        return a.guildStatus === "inviteGuest";
+      });
 
-            var guildMembers = rawUsersData.filter(function(a) {
-                return a.guildStatus === 'currentMember';
-            });
+      var guildMembers = rawUsersData.filter(function(a) {
+        return a.guildStatus === "currentMember";
+      });
 
-            $('#registrationButtonContainer').removeClass('hidden');
+      $("#registrationButtonContainer").removeClass("hidden");
 
-            for (var i = 0; i < inviteGuests.length; i++) {
-                insertUserToTable('registeredInviteGuests', i + 1, inviteGuests[i]);
-            }
+      for (var i = 0; i < inviteGuests.length; i++) {
+        insertUserToTable("registeredInviteGuests", i + 1, inviteGuests[i]);
+      }
 
-            var inviteGuestsCount = inviteGuests.length;
+      var inviteGuestsCount = inviteGuests.length;
 
-            for (var i = 0; i < guildMembers.length; i++) {
-                insertUserToTable('registeredGuildMembers', i + 1, guildMembers[i]);
-            }
-        },
-        error: function(response) {
-            console.error('ERROR', response);
-        },
-    });
+      for (var i = 0; i < guildMembers.length; i++) {
+        insertUserToTable("registeredGuildMembers", i + 1, guildMembers[i]);
+      }
+    },
+    error: function(response) {
+      console.error("ERROR", response);
+    }
+  });
 });
 
+if (!isRegistrationOn) {
+  $("#registrationButton").remove();
+}
+// else {
+//   $("#registrationEndedDisclaimer").remove();
+// }
 
-$('#text-backdrop').text(backdropText);
-
-
+$("#text-backdrop").text(backdropText);

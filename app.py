@@ -31,6 +31,12 @@ CORS(app)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 routes = Blueprint('ilmo', __name__, url_prefix='/api')
 
+invite_guest_open = dt.datetime(2020, 2, 3, 10, 0)
+invite_guest_close = dt.datetime(2020, 2, 16, 21, 59)
+
+guild_member_open = dt.datetime(2020, 2, 17, 10, 0)
+guild_member_close = dt.datetime(2020, 2, 24, 21, 59)
+
 
 # ======================================
 # >>> VIEWS
@@ -134,7 +140,7 @@ def users_update():
         now = dt.datetime.now()
         # Registration opens at
         # 12.2.2018 @ 10:00am (UTC) [1479722400]
-        if now < dt.datetime(2018, 2, 12, 10, 0):
+        if now < invite_guest_open:
             print('Registration has not opened yet')
             return 'Registration has not opened yet'
 
@@ -189,8 +195,7 @@ def users_create():
         # 12.02.2018 @ 10:00am (UTC) [1518343200]
         # Closes 2.3.2018 @ 21:55 (UTC)
         # if timestamp < 1518343200 or timestamp > 1520027700:
-        # if (now < dt.datetime(2019, 2, 12, 10, 0) or
-        if (now > dt.datetime(2019, 3, 28, 21, 59)):
+        if (now < invite_guest_open or now > guild_member_close):
             print('Registration has closed')
             return json.dumps({'userId': '', 'timestamp': timestamp})
     users = db.users
@@ -242,16 +247,16 @@ def validate_user(user, timestamp, index, debug):
     default_status = 'currentMember'
     now = dt.datetime.fromtimestamp(timestamp)
     if debug != 1:
-        # Before 16.2.2018 10 am (UTC) only allow invite guests
-        # if timestamp < 1518775200:
-        if now < dt.datetime(2019, 2, 19, 10, 0):
+        # Separate invite guest period
+        if now >= invite_guest_open and now <= invite_guest_close:
             valid_statuses = ['inviteGuest']
             default_status = 'inviteGuest'
 
-        # After 23.2.2018 21:55 (UTC) no more invite guests
-        # if timestamp > 1519422900:
-        if now > dt.datetime(2019, 2, 24, 21, 59):
-            valid_statuses = ['currentMember']
+        # No more invite guests unless they are company representatives
+        is_company = user.get('status') == 'company'
+        if now >= guild_member_open and now <= guild_member_close:
+            if not is_company:
+                valid_statuses = ['currentMember']
         
     validated_user = {
         'additionalInfo': user.get('additionalInfo', ''),
@@ -294,7 +299,7 @@ def session_timeout(mongo_db, user_id):
 
 def get_database():
     client = MongoClient('localhost', 27017)
-    return client.fuusio70
+    return client.fuusio73
 
 
 # ======================================
