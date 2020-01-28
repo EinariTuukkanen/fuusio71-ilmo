@@ -6,11 +6,11 @@ from pymongo import MongoClient
 def calculate_price(user):
     price = 0
     if user['status'] == 'student':
-        price += 65
+        price += 70
     elif user['status'] == 'notStudent':
         price += 90
     if user['sillis'] == 'true':
-        price += 15
+        price += 20
     return price
 
 
