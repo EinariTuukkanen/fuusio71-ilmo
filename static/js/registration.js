@@ -290,3 +290,6 @@ document.getElementById('#inviteGuest').checked = true;
 //     $('.hidden-status').removeClass('hidden');
 //     $('.invite-status').addClass('hidden');
 // }
+
+$('#text-backdrop').text(backdropText);
+
