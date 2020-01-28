@@ -22,7 +22,7 @@ body {
   color: var(--dark-gray);
 }
 .container {
-  width: 1000px;
+  max-width: 1000px;
   margin: 30px auto;
   background-image: url("../img/ricepaper2.png");
   background-repeat: repeat;
@@ -121,10 +121,8 @@ hr.small {
   margin-top: 60px;
   font-weight: 700;
 }
-.company-logos {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.company {
+  margin-bottom: 20px;
 }
 .caption {
   text-align: center;
@@ -445,6 +443,9 @@ select:-webkit-autofill:focus {
 }
 @media only screen and (max-width: 768px) {
   /* MOBILE */
+  .header-logo {
+    width: 100%;
+  }
   #registrationInfo {
     font-size: 14px;
   }
