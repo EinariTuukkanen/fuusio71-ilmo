@@ -31,7 +31,7 @@ CORS(app)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 routes = Blueprint('ilmo', __name__, url_prefix='/api')
 
-invite_guest_open = dt.datetime(2020, 2, 3, 10, 0)
+invite_guest_open = dt.datetime(2020, 2, 4, 10, 0)
 invite_guest_close = dt.datetime(2020, 2, 16, 21, 59)
 
 guild_member_open = dt.datetime(2020, 2, 17, 10, 0)
