@@ -29,6 +29,7 @@ body {
   margin: 30px auto;
   background-image: url('../img/ricepaper2.png');
   background-repeat: repeat;
+  padding: 15px 30px;
 
   -webkit-box-shadow: -3px 4px 18px 0 rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -3px 4px 18px 0 rgba(0, 0, 0, 0.75);
