@@ -260,6 +260,9 @@
                   name="allergies"
                 ></textarea>
                 <p class="help-block text-danger"></p>
+                <p class="help-block info">
+                  Pääjuhlan menu on lakto-ovo-vegetaristinen
+                </p>
               </div>
             </div>
             <div class="row control-group form-row form-group controls">
@@ -269,6 +272,7 @@
               </div>
               <div class="col-xs-7 controls">
                 <select
+                  id="drinkMenu"
                   name="drinkMenu"
                   class="form-control form-select"
                   required
@@ -279,6 +283,33 @@
                   <option value="nonAlcoholic">alkoholiton</option>
                   <option value="onlyWines">vain viinit</option>
                 </select>
+              </div>
+            </div>
+            <div id="coffeeAvec" class="row control-group form-row form-group controls hidden">
+              <div class="col-xs-6">
+                <label
+                  >* Kahviavec</label
+                >
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="col-xs-3">
+                <label class="radio-inline">
+                  <input
+                    type="radio"
+                    name="coffeeAvec"
+                    minchecked="1"
+                    checked
+                    data-validation-minchecked-message="Valitse toinen"
+                    value="jallu"
+                  />
+                  <span class="radio-label">Jaloviina</span>
+                </label>
+              </div>
+              <div class="col-xs-3">
+                <label class="radio-inline">
+                  <input type="radio" name="coffeeAvec" value="punssi" />
+                  <span class="radio-label">Punssi</span>
+                </label>
               </div>
             </div>
             <div class="row control-group">

@@ -13,18 +13,21 @@
 
 @font-face {
   font-family: Precious;
-  src: url("../fonts/Precious.ttf");
+  src: url('../fonts/Precious.ttf');
 }
 
 body {
-  font-family: "Special Elite";
+  font-family: 'Special Elite';
   font-size: 18px;
   color: var(--dark-gray);
+}
+.hidden {
+  display: none;
 }
 .container {
   max-width: 1000px;
   margin: 30px auto;
-  background-image: url("../img/ricepaper2.png");
+  background-image: url('../img/ricepaper2.png');
   background-repeat: repeat;
 
   -webkit-box-shadow: -3px 4px 18px 0 rgba(0, 0, 0, 0.75);
@@ -42,7 +45,7 @@ body {
 }
 h2 {
   font-size: 42px;
-  font-family: "Special Elite";
+  font-family: 'Special Elite';
   letter-spacing: 5px;
 }
 .header h1 {
@@ -149,14 +152,14 @@ footer .copyright {
 .form-control {
   color: var(--dark-gray);
   /* font-family: "Indie Flower", cursive; */
-  font-family: "Special Elite";
+  font-family: 'Special Elite';
   font-size: 32px;
   box-shadow: none;
 }
 .form-control::placeholder {
   color: var(--gray);
   font-size: 24px;
-  font-family: "Special Elite";
+  font-family: 'Special Elite';
 }
 .form-control:focus {
   border-color: var(--gray);
@@ -217,13 +220,17 @@ footer .copyright {
 }
 
 .btn-outline {
-  font-family: "Special Elite";
+  font-family: 'Special Elite';
   font-size: 18px;
   background: transparent;
   border: 3px solid var(--dark-gray);
   border-radius: 35px;
   padding: 20px 35px;
   text-transform: uppercase;
+}
+.btn-outline > span {
+  position: relative;
+  top: 2px;
 }
 .btn-outline:hover,
 .btn-outline:active:focus,
@@ -292,7 +299,7 @@ footer .copyright {
 }
 .pager li > a,
 .pager li > span {
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 800;
@@ -343,7 +350,7 @@ img::-moz-selection {
   padding-top: 25px;
 }
 .form-row label {
-  font-family: "Special Elite";
+  font-family: 'Special Elite';
   font-size: 24px;
   font-weight: lighter;
   color: var(--gray);
@@ -363,7 +370,7 @@ img::-moz-selection {
 /* border: 1px solid #000; */
 /* } */
 .required-field::before {
-  content: " * ";
+  content: ' * ';
 }
 .help-block.small {
   font-size: 14px;
@@ -380,14 +387,14 @@ img::-moz-selection {
 .table-mobile-friendly {
   word-break: break-all;
 }
-input[type="radio"] {
+input[type='radio'] {
   position: absolute;
   visibility: hidden;
 }
-input[type="radio"]:checked ~ .radio-label {
+input[type='radio']:checked ~ .radio-label {
   color: var(--dark-gray);
   text-decoration: underline;
-  font-family: "Special Elite";
+  font-family: 'Special Elite';
   font-weight: bold;
 }
 .table > thead > tr > th {
@@ -411,7 +418,7 @@ input[type="radio"]:checked ~ .radio-label {
   word-break: break-all;
   color: rgba(210, 210, 210, 0.4);
   font-size: 20px;
-  font-family: "Special Elite", cursive;
+  font-family: 'Special Elite', cursive;
   /* background-image: url('../img/lightpaperfibers.png'); */
   /* background-image: url('../img/wood_1.png'); */
   background-color: #1d1d1d;
@@ -490,7 +497,7 @@ select:-webkit-autofill:focus {
   .floating-label-form-group textarea {
     font-size: 18px;
   }
-  input[type="radio"]:checked ~ .radio-label {
+  input[type='radio']:checked ~ .radio-label {
     font-size: 18px;
   }
 }

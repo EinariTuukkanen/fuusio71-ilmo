@@ -216,6 +216,7 @@ def users_create():
         'drinkMenu': '',
         'guildStatus': '',
         'greeting': '',
+        'coffeeAvec': '',
         'index': len(users_list),
         'timestamp': timestamp
     }
@@ -257,6 +258,21 @@ def validate_user(user, timestamp, index, debug):
         if now >= guild_member_open and now <= guild_member_close:
             if not is_company:
                 valid_statuses = ['currentMember']
+    
+    drinkMenu = (
+        user.get('drinkMenu') if user.get('drinkMenu')
+        in ['alcoholic', 'nonAlcoholic', 'onlyWines']
+        else 'N/A'
+    )
+
+    coffeeAvec = 'nonAlcoholic'
+    if drinkMenu == 'alcoholic':
+        coffeeAvec = (
+            user.get('coffeeAvec') if user.get('coffeeAvec')
+            in ['jallu', 'punssi']
+            else 'N/A'
+        )
+
         
     validated_user = {
         'additionalInfo': user.get('additionalInfo', ''),
@@ -279,10 +295,8 @@ def validate_user(user, timestamp, index, debug):
             user.get('guildStatus') if user.get('guildStatus')
             in valid_statuses
             else default_status),
-        'drinkMenu': (
-            user.get('drinkMenu') if user.get('drinkMenu')
-            in ['alcoholic', 'nonAlcoholic', 'onlyWines']
-            else 'N/A'),
+        'drinkMenu': drinkMenu,
+        'coffeeAvec': coffeeAvec,
         'greeting': (
             user.get('greeting') if user.get('greeting')
             in ['true', 'false'] else 'false'),

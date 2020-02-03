@@ -15,7 +15,7 @@ def calculate_price(user):
 
 
 client = MongoClient('localhost', 27017)
-db = client.fuusio70
+db = client.fuusio73
 users = db.users.find()
 with open('users.csv', 'w') as csvfile:
     fieldnames = list(users[0].keys()) + ['price']
