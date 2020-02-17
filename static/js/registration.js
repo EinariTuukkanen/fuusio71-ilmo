@@ -265,7 +265,7 @@ if (inviteGuestIsOn) {
 
 if (guildMemberIsOn) {
   document.getElementById('guildMember').disabled = false;
-  if (!inviteGuestIsOn) document.getElementById('inviteGuest').checked = true;
+  if (!inviteGuestIsOn) document.getElementById('guildMember').checked = true;
   // $("#status").append(
   //   $("<option>", {
   //     value: "currentMember",
